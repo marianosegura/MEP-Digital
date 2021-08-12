@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const adminsRoutes = require('./routes/admins');
 const teachersRoutes = require('./routes/teachers');
 const studentsRoutes = require('./routes/students');
+const authRoutes = require('./routes/auth');
 
 // Express configuration
 const app = express();
@@ -41,6 +42,7 @@ mongoose.connect(`mongodb+srv://mep-digital-backend:${ process.env.MONGO_ATLAS_P
 app.use("/api/admins", adminsRoutes);
 app.use("/api/teachers", teachersRoutes);
 app.use("/api/students", studentsRoutes);
+app.use("/api/auth", authRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({ message: "Hi from MEP Digital!" });
