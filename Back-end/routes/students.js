@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');  // for password encryption
-const { getValidateStudent, getValidateTeacher } = require('../validation/getValidators');
+const { getValidateStudent } = require('../validation/getValidators');
 const Student = require('../models/student');
 
 const router = express.Router();
@@ -10,12 +10,8 @@ router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   console.log(`\nFetching student (${id})...`);
   try {
-    const student = await Student.findOne({ id: id });
-
-    if (student == null) {
-      console.log(`Student doesn't exists (${id})!`);
-      return res.status(500).json({ message: "Estudiante no existe" })
-    }
+    const student = await getValidateStudent(id, res);
+    if (!student) return;
 
     console.log(`Success on fetching student (${student.name} ${student.lastname})!`);
     return res.status(200).json({ student });
@@ -75,11 +71,8 @@ router.put("/:id", async (req, res, next) => {
     }
     
     const encryptedPassword = await bcrypt.hash(password, 10); 
-    const student = await Student.findOne({ id: id });
-    if (student == null) {
-      console.log(`Student doesn't exists (${id})!`);
-      return res.status(500).json({ message: "Estudiante no existe" })
-    } 
+    const student = await getValidateStudent(id, res);
+    if (!student) return;
 
     student.email = email;
     student.password = encryptedPassword;
@@ -87,6 +80,7 @@ router.put("/:id", async (req, res, next) => {
     student.lastname = lastname;
     student.grade = grade;
     await student.save();  // update document
+
     console.log(`Student updated successfully (${name} ${lastname})!`);
     return res.status(201).json({ message: 'Se actualizó el estudiante exitosamente' });
 

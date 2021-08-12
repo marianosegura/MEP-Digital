@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');  // for password encryption
 const Teacher = require('../models/teacher');
-const Student = require('../models/student');
+const { getValidateStudent, getValidateTeacher } = require('../validation/getValidators');
 
 const router = express.Router();
 
@@ -12,17 +12,11 @@ router.put("/:id/ratings", async (req, res, next) => {
   console.log(`\nRating teacher (${teacherId})...`);
 
   try {
-    const teacher = await Teacher.findOne({ id: teacherId });
-    if (teacher == null) {
-      console.log(`Teacher doesn't exists (${teacherId})!`);
-      return res.status(500).json({ message: "Profesor no existe" })
-    }
+    const teacher = await getValidateTeacher(teacherId, res);
+    if (!teacher) return;
 
-    const student = await Student.findOne({ id: studentId });
-    if (student == null) {
-      console.log(`Student doesn't exists (${studentId})!`);
-      return res.status(500).json({ message: "Estudiante no existe" })
-    }
+    const student = await getValidateStudent(studentId, res);
+    if (!student) return;
 
     if (rating > 100 || rating < 0) {
       console.log(`Invalid rating (${rating})!`);  // rating has to be in [0, 100]
@@ -58,17 +52,11 @@ router.delete("/:id/ratings", async (req, res, next) => {
   console.log(`\nDeleting teacher (${teacherId}) rating by student (${studentId})...`);
 
   try {
-    const teacher = await Teacher.findOne({ id: teacherId });
-    if (teacher == null) {
-      console.log(`Teacher doesn't exists (${teacherId})!`);
-      return res.status(500).json({ message: "Profesor no existe" })
-    }
+    const teacher = await getValidateTeacher(teacherId, res);
+    if (!teacher) return;
 
-    const student = await Student.findOne({ id: studentId });
-    if (student == null) {
-      console.log(`Student doesn't exists (${studentId})!`);
-      return res.status(500).json({ message: "Estudiante no existe" });
-    }
+    const student = await getValidateStudent(studentId, res);
+    if (!student) return;
     
     const teacherRating = teacher.ratings.find(ratingObject => ratingObject.student.equals(student._id));
     if (teacherRating) {
@@ -95,12 +83,8 @@ router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   console.log(`\nFetching teacher (${id})...`);
   try {
-    const teacher = await Teacher.findOne({ id: id }).populate('ratings.student');
-
-    if (teacher == null) {
-      console.log(`Teacher doesn't exists (${id})!`);
-      return res.status(500).json({ message: "Profesor no existe" })
-    }
+    const teacher = await getValidateTeacher(id, res, true);
+    if (!teacher) return;
 
     console.log(`Success on fetching teacher (${teacher.name} ${teacher.lastname})!`);
     return res.status(200).json({ teacher });
