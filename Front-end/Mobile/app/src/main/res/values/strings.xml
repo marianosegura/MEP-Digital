@@ -4,4 +4,8 @@
     <string name="password">Contraseña</string>
     <string name="incorrect_user_password">Usuario o contraseña erroneos</string>
     <string name="login_button">Ingresar</string>
+    <string name="title_activity_admin">Administrador</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
