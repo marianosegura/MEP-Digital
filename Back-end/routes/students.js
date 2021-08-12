@@ -86,7 +86,7 @@ router.put("/:id", async (req, res, next) => {
     student.lastname = lastname;
     student.grade = grade;
     await student.save();  // update document
-    console.log(`Student updated successfuly (${name} ${lastname})!`);
+    console.log(`Student updated successfully (${name} ${lastname})!`);
     return res.status(201).json({ message: 'Se actualizó el estudiante exitosamente' });
 
   } catch (error) {
@@ -147,7 +147,7 @@ router.post("/", async (req, res, next) => {
     const student = new Student({ id, email, password: encryptedPassword, name, lastname, grade });
 
     await student.save();  // call to create student
-    console.log(`Student created successfuly (${name} ${lastname})!`);
+    console.log(`Student created successfully (${name} ${lastname})!`);
     return res.status(201).json({ message: 'Se creó el estudiante exitosamente' });
 
   } catch (error) {
