@@ -120,6 +120,45 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 
+// UPDATE Teacher
+router.put("/:id", async (req, res, next) => {
+  const id = req.params.id;
+  const { email, password, name, lastname } = req.body;
+  console.log(`\nUpdating teacher (${id}, ${name} ${lastname})...`);
+
+  if (!id || !email || !password || !name || !lastname) {
+    console.log('\nTeacher data field is missing')
+    return res.status(500).json({ message: "Falta un campo del profesor" });
+  }
+
+  try {
+    const emailIsInUse = await Teacher.exists({ id: { $ne: id }, email: email });
+    if (emailIsInUse) {
+      console.log(`Email already in use (${email})!`);
+      return res.status(500).json({ message: "Correo ya está en uso" })
+    }
+    
+    const encryptedPassword = await bcrypt.hash(password, 10); 
+    const teacher = await getValidateTeacher(id, res);
+    if (!teacher) return;
+
+    teacher.email = email;
+    teacher.password = encryptedPassword;
+    teacher.name = name;
+    teacher.lastname = lastname;
+    await teacher.save();  // update document
+
+    console.log(`Teacher updated successfully (${name} ${lastname})!`);
+    return res.status(201).json({ message: 'Se actualizó el profesor exitosamente' });
+
+  } catch (error) {
+    console.log(error);
+    console.log(`Error updating teacher!`);
+    return res.status(500).json({ message: "Un error ocurrió actualizando el profesor" })
+  }
+});
+
+
 // GET Teachers
 router.get("/", async (req, res, next) => {
   console.log(`\nFetching all teachers...`);
