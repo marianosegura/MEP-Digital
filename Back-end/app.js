@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');  
 const mongoose = require('mongoose');
 const studentsRoutes = require('./routes/students');
+const adminsRoutes = require('./routes/admins');
 
 // Express configuration
 const app = express();
@@ -36,6 +37,7 @@ mongoose.connect(`mongodb+srv://mep-digital-backend:${ process.env.MONGO_ATLAS_P
 
 
 app.use("/api/students", studentsRoutes);
+app.use("/api/admins", adminsRoutes);
 
 app.use('/', (req, res, next) => {
     res.status(200).json({ message: "Hi!" });
