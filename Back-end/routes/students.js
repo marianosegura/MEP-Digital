@@ -45,7 +45,7 @@ router.delete("/:id", async (req, res, next) => {
   } catch (error) {
     console.log(error);
     console.log(`Error deleting student!`);
-    return res.status(500).json({ message: "Un error ocurrió eliminando los estudiantes" })
+    return res.status(500).json({ message: "Un error ocurrió eliminando el estudiante" })
   }
 });
 
@@ -92,7 +92,7 @@ router.put("/:id", async (req, res, next) => {
   } catch (error) {
     console.log(error);
     console.log(`Error updating student!`);
-    return res.status(500).json({ message: "Un error ocurrió actualizando los estudiantes" })
+    return res.status(500).json({ message: "Un error ocurrió actualizando el estudiante" })
   }
 });
 
