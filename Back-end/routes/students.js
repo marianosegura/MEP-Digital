@@ -22,7 +22,7 @@ router.get("/:id", async (req, res, next) => {
   } catch (error) {
     console.log(error);
     console.log(`Error fetching student!`);
-    return res.status(500).json({ message: "Un error ocurrió recuperando los estudiantes" })
+    return res.status(500).json({ message: "Un error ocurrió recuperando el estudiante" })
   }
 });
 
