@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');  
 const mongoose = require('mongoose');
-const studentsRoutes = require('./routes/students');
+
 const adminsRoutes = require('./routes/admins');
+const teachersRoutes = require('./routes/teachers');
+const studentsRoutes = require('./routes/students');
 
 // Express configuration
 const app = express();
@@ -36,11 +38,12 @@ mongoose.connect(`mongodb+srv://mep-digital-backend:${ process.env.MONGO_ATLAS_P
 });
 
 
-app.use("/api/students", studentsRoutes);
 app.use("/api/admins", adminsRoutes);
+app.use("/api/teachers", teachersRoutes);
+app.use("/api/students", studentsRoutes);
 
 app.use('/', (req, res, next) => {
-    res.status(200).json({ message: "Hi!" });
+    res.status(200).json({ message: "Hi from MEP Digital!" });
 });
 
 module.exports = app;

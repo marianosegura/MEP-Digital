@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');  // for password encryption
+const { getValidateStudent, getValidateTeacher } = require('../validation/getValidators');
 const Student = require('../models/student');
 
 const router = express.Router();
