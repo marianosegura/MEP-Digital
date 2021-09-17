@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/NameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:text="Nombre" />
+
+    <TextView
+        android:id="@+id/phoneTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="Telefono" />
+
+    <TextView
+        android:id="@+id/EmailtextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="Correo" />
+
+    <Spinner
+        android:id="@+id/qualificationSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:spinnerMode="dialog"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/qualitificationStudentTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/qualification" />
+
+    <Button
+        android:id="@+id/backStudentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ready" />
+
+</LinearLayout>

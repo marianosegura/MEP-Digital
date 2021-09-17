@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:id="@+id/classNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:ems="10"
+        android:text="Materia"/>
+
+    <TextView
+        android:id="@+id/newsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:text="Noticias" />
+
+    <ListView
+        android:id="@+id/newsListView"
+        android:layout_width="match_parent"
+        android:layout_height="195dp" />
+
+    <TextView
+        android:id="@+id/homeworkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:text="Tareas" />
+
+    <ListView
+        android:id="@+id/homeworkListView"
+        android:layout_width="match_parent"
+        android:layout_height="128dp" />
+
+    <TextView
+        android:id="@+id/teacherTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:text="Profesor" />
+
+
+    <ListView
+        android:id="@+id/teacherListView"
+        android:layout_width="match_parent"
+        android:layout_height="66dp" />
+
+    <Button
+        android:id="@+id/chatStudentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/chat" />
+
+    <Button
+        android:id="@+id/readyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ChangeView"
+        android:text="Listo" />
+
+</LinearLayout>

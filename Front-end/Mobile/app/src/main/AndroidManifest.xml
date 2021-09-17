@@ -2,17 +2,60 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mep_digital">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/appicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MEPDigital">
         <activity
-            android:name=".AdminActivity"
-            android:label="@string/title_activity_admin"></activity>
-        <activity android:name=".MainActivity">
+            android:name=".Student.Student_ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Student.Student_teacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Student.List_classActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Student.Student_classActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Teacher.ChatTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Teacher.StudentsListTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Teacher.AssigmentTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Teacher.NewTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Teacher.CourseTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Teacher.ListCourseTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Admin.Detail.Course.CourseStudentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Admin.Detail.Course.CourseTeacherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Admin.Detail.Course.ClassDetailActivity"
+            android:exported="true" />
+        <activity android:name=".Admin.Detail.StudentDetailActivity" />
+        <activity android:name=".Admin.Detail.TeacherDetailActivity" />
+        <activity
+            android:name=".Admin.AdminActivity"
+            android:label="@string/title_activity_admin" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
