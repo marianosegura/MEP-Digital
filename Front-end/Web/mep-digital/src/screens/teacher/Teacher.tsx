@@ -4,7 +4,7 @@ export default class Teacher extends Component {
     render() {
         return (
             <div>
-                Im teacher screen
+                <h1>Im teacher screen</h1>
             </div>
         )
     }

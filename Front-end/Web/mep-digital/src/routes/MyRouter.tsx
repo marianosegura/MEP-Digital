@@ -12,19 +12,19 @@ export default class MyRouter extends Component {
             <Router>
                 <Route 
                     exact path = "/" 
-                    render = {(() => {return <Login/>})} 
+                    component = {Login}
                 />
                 <Route 
                     exact path = "/teacher" 
-                    render = {(() => {return <Teacher/>})} 
+                    component = {Teacher}
                 />
                 <Route 
                     exact path = "/student" 
-                    render = {(() => {return <Student/>})} 
+                    component = {Student}
                 />
                 <Route 
                     exact path = "/admin" 
-                    render = {(() => {return <Admin/>})} 
+                    component = {Admin}
                 />
             </Router>
         )
