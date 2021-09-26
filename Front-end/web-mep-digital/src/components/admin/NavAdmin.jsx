@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function NavAdmin(props) {
-    let history = useHistory();
-
     return (
         <div className = "navAdmin">
             <Link to = "/admin/courses">Cursos</Link>
