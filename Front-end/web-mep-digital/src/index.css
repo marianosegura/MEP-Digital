@@ -29,3 +29,13 @@
 .navAdminItem{
   display: table-cell;
 }
+.item{
+  background-color: tan;
+  padding: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+

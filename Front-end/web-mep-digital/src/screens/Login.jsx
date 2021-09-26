@@ -62,11 +62,12 @@ export default class Login extends Component {
             .then( json => {
             this.setState({id : (this.state.type === "admin") ? 'admin' : json.id})
             this.router()
-        }).catch(err => {
-            err.json().then(errorMessage => {
-                alert(errorMessage.message)
-            })
         })
+        // .catch(err => {
+        //     err.json().then(errorMessage => {
+        //         alert(errorMessage.message)
+        //     })
+        // })
     }
     checkInputData = () => {
         if(this.state.type !== "default" &&
