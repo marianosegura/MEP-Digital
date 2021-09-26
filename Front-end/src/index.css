@@ -1,0 +1,25 @@
+.studenScreen{
+  border: 1px, solid, #000;
+  background-color: antiquewhite;
+}
+.listCourses{
+  background-color: aquamarine;
+  width: 20%;
+  float: left;
+
+}
+.course{
+  background-color: cadetblue;
+  width: 80%;
+  float: left;
+} 
+.courseDetail{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.unit{
+  background-color: thistle;
+  padding: 10px;
+  margin: 10px;
+}
