@@ -3,7 +3,7 @@
   background-color: antiquewhite;
 }
 .listCourses{
-  background-color: aquamarine;
+  background-color: #c9daff;
   width: 20%;
   float: left;
 
@@ -46,5 +46,13 @@
 }
 .background{
   background-color: #3c4969;
+}
+.textItem{
+  padding: 0px;
+  margin: 0px;
+}
+.itemButton{
+  flex-direction: column;
+  width: 100%;
 }
 

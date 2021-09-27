@@ -1,10 +1,14 @@
+import { Button } from '@mui/material'
 import React from 'react'
 import ItemCourse from './Item'
 
 export default function List(props) {
     return (
         <div>
-            <p>I'm a list of {props.text}</p>
+            <Button variant="text" className = 'itemButton'>
+                <p className = 'textItem'>Nuevo curso</p>
+                <p className = 'textItem'>Click aquí</p>
+            </Button>
             {props.courses.length > 0 ? props.courses.map((course) => (
                     <ItemCourse 
                         id = {course.id}

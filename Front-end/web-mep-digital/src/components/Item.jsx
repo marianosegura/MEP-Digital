@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from '@mui/material'
 
 export default function Item(props) {
     const handleClick = (e) => {
@@ -7,9 +8,9 @@ export default function Item(props) {
         console.log("I have to change all for " + props.id)
     }
     return (
-      <button onClick={handleClick} className="item">
-        <p>{props.name}</p>
-        <p>Id: {props.id}</p>
-      </button>
+      <Button variant="text" onClick={handleClick} className="itemButton">
+        <p className = 'textItem'>{props.name}</p>
+        <p className = 'textItem'>Id: {props.id}</p>
+      </Button>
     );
 }

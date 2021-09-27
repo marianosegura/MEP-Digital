@@ -1,26 +1,86 @@
+import { TextField, 
+    Box, 
+    FormControl, 
+    InputLabel, 
+    Select, 
+    MenuItem,
+    Button
+} from '@mui/material'
+import { useState, useEffect } from 'react'
 import React from 'react'
 
 export default function CourseBasicInfo(props) {
+    let [name, setName] = useState(props.name)
+    let [id, setId] = useState(props.id)
+    let [grade, setGrade] = useState(props.grade)
+    
+    function onChangeName(e) {
+        setName(e.target.value) 
+    }
+    function onChangeId(e) {
+        setId(e.target.value)
+    }
+    function onChangeGrade(e) {
+        setGrade(e.target.value)
+    }
+    useEffect(() => {
+        setName(props.new ? "" : props.name)
+        setId(props.new ? "" : props.id)
+        setGrade(props.new ? "default" : props.grade)
+    },[props])
     return (
-        <div className = "unit">
-            <p>Información básica del curso</p>
-            <form> 
-                <input type = "text" placeholder = "Nombre" value = {props.name}/>
-                <br/>
-                <input type = "text" placeholder = "Id del curso" value = {props.id}/> 
-                <br/>
-                <select value = {props.grade}>
-                        <option value = "default" disabled hidden>Selecciona el grado</option>
-                        <option value = "1">Primer año</option>
-                        <option value = "2">Segundo año</option>
-                        <option value = "3">Tercer año</option>
-                        <option value = "4">Cuarto año</option>
-                        <option value = "5">Quinto año</option>
-                        <option value = "6">Sexto año</option>
-                    </select>
-                <br/>
-                <input type = "submit" value = "Guardar"/> 
-            </form>
-        </div>
-    )
+      <div className="unit">
+        <p>Información básica del curso</p>
+        <form>
+          <Box sx={{ maxWidth: 300 }}>
+            <TextField
+              id="courseName"
+              inputProps={{ min: 0, style: { textAlign: "center" } }}
+              label="Nombre del curso"
+              variant="outlined"
+              name="name"
+              onChange={onChangeName}
+              value={name}
+            />
+            <br />
+            <br />
+            <TextField
+              id="outlined-basic"
+              inputProps={{ min: 0, style: { textAlign: "center" } }}
+              label="Id del curso"
+              variant="outlined"
+              name="id"
+              disabled = {!props.new}
+              onChange={onChangeId}
+              value={id}
+            />
+            <br/><br/>
+            <FormControl fullWidth>
+              <InputLabel id="select-grade-label">
+                Selecciona el grado
+              </InputLabel>
+              <Select
+                labelId="select-grade-label"
+                id="grade-select"
+                value={grade}
+                label="Selecciona el grado"
+                onChange={onChangeGrade}
+              >
+                <MenuItem value={"default"} disabled>Selecciona</MenuItem>
+                <MenuItem value={"1"}>Primer año</MenuItem>
+                <MenuItem value={"2"}>Segundo año</MenuItem>
+                <MenuItem value={"3"}>Tercer año</MenuItem>
+                <MenuItem value={"4"}>Cuarto año</MenuItem>
+                <MenuItem value={"5"}>Quinto año</MenuItem>
+                <MenuItem value={"6"}>Sexto año</MenuItem>
+              </Select>
+            </FormControl>
+            <br/><br/>
+            <Button variant="contained" type="submit">
+              Guardar
+            </Button>
+          </Box>
+        </form>
+      </div>
+    );
 }
