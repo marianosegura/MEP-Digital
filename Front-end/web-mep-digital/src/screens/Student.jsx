@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from 'react'
-import Course from '../components/student/Course'
+import Course from '../components/admin/Course' //Temporal, hasta que me dedique a crear una vista para estudiante
 import {  useLocation } from "react-router-dom";
 import '../index.css'
 import List from '../components/List';
@@ -39,6 +39,7 @@ export default function Student() {
 
     useEffect(() => {
         getCourses()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       },[]);
 
     return (

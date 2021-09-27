@@ -1,6 +1,6 @@
 import React from 'react'
 import List from '../List'
-import Course from '../student/Course'
+import Course from '../admin/Course'
 
 export default function AdminMode(props) {
     return (

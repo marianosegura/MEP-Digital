@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavTeacher from '../../components/admin/NavAdmin'
 import List from '../../components/List'
-import Course from '../../components/student/Course'
+import Course from '../../components/admin/Course'
 
 
 export default function AdminCourses() {
@@ -42,6 +42,7 @@ export default function AdminCourses() {
     
     useEffect(() => {
         getCourses()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       },[]);
 
     return (

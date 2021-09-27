@@ -1,5 +1,5 @@
 import React from 'react'  
-import CourseBasicInfo from '../admin/CourseBasicInfo'
+import CourseBasicInfo from './CourseBasicInfo'
 
 export default function Course(props) {
     return (
