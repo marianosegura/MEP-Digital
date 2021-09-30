@@ -48,8 +48,15 @@ export default function AdminCourses() {
     return (
         <div>
             <NavTeacher/>
-            <div className = "listCourses"><List text = {"Cursos"} courses = {courses} onChange = {handleChange}/></div>
-            <div className = "course"><Course text = {courseId} course = {getCourseInfo()}/></div>
+            <div className = "listCourses">
+                <List text = {"Curso"} 
+                courses = {courses} 
+                onChange = {handleChange}/>
+            </div>
+            <div className = "course">
+                <Course text = {courseId} 
+                course = {getCourseInfo()}/>
+            </div>
         </div>
     )
 }

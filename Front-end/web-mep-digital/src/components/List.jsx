@@ -6,7 +6,7 @@ export default function List(props) {
     return (
         <div>
             <Button variant="text" className = 'itemButton'>
-                <p className = 'textItem'>Nuevo curso</p>
+                <p className = 'textItem'>Nuevo {props.text}</p>
                 <p className = 'textItem'>Click aquí</p>
             </Button>
             {props.courses.length > 0 ? props.courses.map((course) => (
