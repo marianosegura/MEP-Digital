@@ -4,20 +4,20 @@ import TeacherBasicInfo from './TeacherBasicInfo'
 export default function Teacher(props) {
     return (
         <div className = "courseDetail">
-        {props.course !== undefined ?
+        {props.teacher !== undefined ?
             <TeacherBasicInfo 
             name = {props.teacher.name} 
             id = {props.teacher.id} 
             lastName = {props.teacher.lastName}
             email = {props.teacher.email}  
-            isNew = {false}/>
+            new = {false}/>
         :
             <TeacherBasicInfo 
             name = {""} 
             id = {""} 
             lastName = {""}
             email = {""}  
-            isNew = {true}/>
+            new = {true}/>
         }
         
         <div className = "unit">Hola soy una unidad de {props.text}</div>

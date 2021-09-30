@@ -23,28 +23,19 @@ export default function CourseBasicInfo(props) {
     function onChangeGrade(e) {
         setGrade(e.target.value)
     }
+
     useEffect(() => {
         setName(props.new ? "" : props.name)
         setId(props.new ? "" : props.id)
         setGrade(props.new ? "default" : props.grade)
     },[props])
+
     return (
       <div className="unit">
         <p>Información básica del curso</p>
         <form>
           <Box sx={{ maxWidth: 300 }}>
-            <TextField
-              id="courseName"
-              inputProps={{ min: 0, style: { textAlign: "center" } }}
-              label="Nombre del curso"
-              variant="outlined"
-              name="name"
-              onChange={onChangeName}
-              value={name}
-            />
-            <br />
-            <br />
-            <TextField
+          <TextField
               id="outlined-basic"
               inputProps={{ min: 0, style: { textAlign: "center" } }}
               label="Id del curso"
@@ -53,6 +44,16 @@ export default function CourseBasicInfo(props) {
               disabled = {!props.new}
               onChange={onChangeId}
               value={id}
+            />
+            <br/><br/>
+            <TextField
+              id="courseName"
+              inputProps={{ min: 0, style: { textAlign: "center" } }}
+              label="Nombre del curso"
+              variant="outlined"
+              name="name"
+              onChange={onChangeName}
+              value={name}
             />
             <br/><br/>
             <FormControl fullWidth>

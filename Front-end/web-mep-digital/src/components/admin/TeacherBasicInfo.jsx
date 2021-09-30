@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -14,7 +14,7 @@ export default function TeacherBasicInfo(props) {
         setName(e.target.value)
     }
     function onChangeId(e) {
-        if(props.isNew){
+        if(props.new){
             setId(e.target.value)
         } else {
             console.log("Cant edit keys values like id")
@@ -29,25 +29,27 @@ export default function TeacherBasicInfo(props) {
     function onChangePassword(e) {
         setPassword(e.target.value)
     }
+
     useEffect(() => {
-        setName(props.isNew ? "" : props.name)
-        setId(props.isNew ? "" : props.id)
-        setLastName(props.isNew ? "" : props.lastName)
-        setEmail(props.isNew ? "" : props.email)
-        setPassword(props.isNew ? "" : props.password)
+        setName(props.new ? "" : props.name)
+        setId(props.new ? "" : props.id)
+        setLastName(props.new ? "" : props.lastName)
+        setEmail(props.new ? "" : props.email)
+        setPassword("")
     }, [props])
+
     return (
         <div className = 'unit'>
             <p>Información básica del profesor</p>
             <form>
                 <Box sx = {{ maxWidth: 300}}>
                     <TextField
-                    id = 'teacherid'
+                    id = 'teacherId'
                     inputProps = {{min: 0, style: {textAlign: 'center'}}}
                     label = 'Id del profesor'
                     variant = 'outlined'
                     name = 'id'
-                    disabled = {!props.isNew}
+                    disabled = {!props.new}
                     onChange = {onChangeId}
                     value = {id}/>
                     <br/><br/>
@@ -86,7 +88,6 @@ export default function TeacherBasicInfo(props) {
                     name = 'password'
                     onChange = {onChangePassword}
                     value = {password}/>
-                    <br/><br/>
                     <br/><br/>
                     <Button variant="contained" type="submit">
                     Guardar

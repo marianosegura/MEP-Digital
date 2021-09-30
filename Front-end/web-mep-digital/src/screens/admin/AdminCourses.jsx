@@ -50,7 +50,7 @@ export default function AdminCourses() {
             <NavTeacher/>
             <div className = "listCourses">
                 <List text = {"Curso"} 
-                courses = {courses} 
+                items = {courses} 
                 onChange = {handleChange}/>
             </div>
             <div className = "course">

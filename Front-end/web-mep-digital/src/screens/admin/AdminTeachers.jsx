@@ -1,5 +1,4 @@
-import React from 'react'
-import AdminMode from '../../components/admin/AdminMode'
+import React, {useState, useEffect} from 'react'
 import NavAdmin from '../../components/admin/NavAdmin'
 import Teacher from '../../components/admin/Teacher'
 import List from '../../components/List'
@@ -13,7 +12,7 @@ export default function AdminTeachers() {
         setTeacherId(teacherId)
     }
 
-    function getCourseInfo() {
+    function getTeacherInfo() {
         return teachers.find(teacher => teacher.id === teacherId)
     }
 
@@ -29,9 +28,9 @@ export default function AdminTeachers() {
             return response.json()  //we only get here if there is no error
             })
             .then( json => {
-            setCourses(json.teachers)
+            setTeachers(json.teachers)
             if(teachers > 0){
-                setCourseId(teachers[0].id)
+                setTeacherId(teachers[0].id)
             }
         }).catch(err => {
             err.json().then(errorMessage => {
@@ -50,13 +49,14 @@ export default function AdminTeachers() {
         <div>
             <NavAdmin/>
             <div className = 'listCourses'>
-                <List text = {'Profesor'} 
-                teachers = {teachers}
+                <List 
+                text = {'Profesor'} 
+                items = {teachers}
                 onChange = {handleChange}/>
             </div>
             <div className = 'course'>
                 <Teacher text = {teacherId}
-                course = {getTeacherInfo()}/>
+                teacher = {getTeacherInfo()}/>
             </div>
         </div>
     )
