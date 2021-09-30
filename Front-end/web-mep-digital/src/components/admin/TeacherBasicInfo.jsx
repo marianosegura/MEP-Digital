@@ -49,7 +49,7 @@ export default function TeacherBasicInfo(props) {
                     name = 'id'
                     disabled = {!props.isNew}
                     onChange = {onChangeId}
-                    value = {name}/>
+                    value = {id}/>
                     <br/><br/>
                     <TextField
                     id = 'teacherName'
