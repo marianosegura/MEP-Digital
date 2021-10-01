@@ -10,7 +10,13 @@ export default function Item(props) {
     return (
       <Button variant="text" onClick={handleClick} className="itemButton">
         <p className = 'textItem'>{props.name}</p>
-        <p className = 'textItem'>Id: {props.id}</p>
+        {props.id !== "0"
+        ?
+          <p className = 'textItem'>Id: {props.id}</p>
+        :
+          <p>Click aquí</p>
+        }
+        
       </Button>
     );
 }

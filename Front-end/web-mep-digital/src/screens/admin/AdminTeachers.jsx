@@ -7,9 +7,11 @@ export default function AdminTeachers() {
 
     const [teachers, setTeachers] = useState([])
     const [teacherId, setTeacherId] = useState("")
+    const [courses, setCourses] = useState([])
 
     function handleChange(teacherId) {
         setTeacherId(teacherId)
+        getCourses()
     }
 
     function getTeacherInfo() {
@@ -32,6 +34,27 @@ export default function AdminTeachers() {
             if(teachers > 0){
                 setTeacherId(teachers[0].id)
             }
+        })
+    }
+    const  getCourses = async () => {
+        var data = {
+            'teacherId': teacherId
+        };
+
+        var myInit = { 
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        };
+        var url = new URL('https://serene-sands-78874.herokuapp.com/api/courses')
+        url.search = new URLSearchParams(data).toString();
+        var myRequest = new Request(url, myInit); 
+        await fetch(myRequest).then( response => {
+            if (!response.ok) { throw response }
+            return response.json()  //we only get here if there is no error
+            })
+            .then( json => {
+            setCourses(json.courses)
+            console.log(json)
         }).catch(err => {
             err.json().then(errorMessage => {
                 alert(errorMessage.message)
@@ -56,7 +79,9 @@ export default function AdminTeachers() {
             </div>
             <div className = 'course'>
                 <Teacher text = {teacherId}
-                teacher = {getTeacherInfo()}/>
+                teacher = {getTeacherInfo()}
+                courses = {courses}
+                />
             </div>
         </div>
     )
