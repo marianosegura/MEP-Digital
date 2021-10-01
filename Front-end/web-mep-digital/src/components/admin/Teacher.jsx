@@ -8,7 +8,7 @@ export default function Teacher(props) {
             <TeacherBasicInfo 
             name = {props.teacher.name} 
             id = {props.teacher.id} 
-            lastName = {props.teacher.lastName}
+            lastName = {props.teacher.lastname}
             email = {props.teacher.email}  
             new = {false}/>
         :
